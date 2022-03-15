@@ -57,15 +57,42 @@ void Selection(int A[], int n)
     }
 }
 
+int Partition(int A[], int l, int h)
+{
+    int pivot=A[l];
+    int i=l,j=h;
+    do{
+        do{i++;}while(A[i]<=pivot);
+        do{j--;}while(A[j]>pivot);
+
+        if(i<j)swap(&A[i], &A[j]);
+    }while(i<j);
+
+    swap(&A[l], &A[j]);
+    return j;
+}
+
+void QuickSort(int A[], int l, int h)
+{
+    if(l<h)
+    {
+        int j=Partition(A,l,h);
+        QuickSort(A,l,j);
+        QuickSort(A,j+1,h);
+    }
+}
+
 int main()
 {
-    int A[]={3,7,9,10,6,5,12,4,11,2};
-    int n=10;
+    int A[]={3,7,9,10,6,5,12,4,11,2,INT_MAX};
+    int n=11;
     //Bubble(A,10);
     //Insertion(A,n);
-    Selection(A,n);
+    //Selection(A,n);
+    QuickSort(A,0,n-1);
     for(int i=0; i<n; i++)
     {
         cout<<A[i]<<" ";
     }
+    return 0;
 }
