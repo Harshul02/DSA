@@ -123,6 +123,18 @@ void IMergeSort(int A[], int n)
         Merge(A,0,p/2-1,n-1);
 }
 
+void MergeSort(int A[], int l, int h)
+{
+    int mid;
+    if(l<h)
+    {
+        mid=(l+h)/2;
+        MergeSort(A,l,mid);
+        MergeSort(A,mid+1,h);
+        Merge(A,l,mid,h);
+    }
+}
+
 int main()
 {
     int A[]={3,7,9,10,6,5,12,4,11,2};
@@ -131,7 +143,8 @@ int main()
     //Insertion(A,n);
     //Selection(A,n);
     //QuickSort(A,0,n-1);
-    IMergeSort(A,n);
+    //IMergeSort(A,n);
+    MergeSort(A,0,n-1);
     for(int i=0; i<n; i++)
     {
         cout<<A[i]<<" ";
