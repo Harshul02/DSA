@@ -135,6 +135,47 @@ void MergeSort(int A[], int l, int h)
     }
 }
 
+int findMax(int A[], int n)
+{
+    int Max=INT_MIN;
+    int i;
+    for(i=0; i<n; i++)
+    {
+        if(A[i]>Max)
+        {
+            Max=A[i];
+        }
+    }
+    return Max;
+}
+
+void CountSort(int A[], int n)
+{
+    int i,j,Max,*c;
+    Max=findMax(A,n);
+
+    c=new int[Max+1];
+    for(i=0; i<Max+1; i++)
+    {
+        c[i]=0;
+    }
+    for(i=0; i<n; i++)
+    {
+        c[A[i]]++;
+    }
+    i=0;j=0;
+    while(j<Max+1)
+    {
+        if(c[j]>0)
+        {
+            A[i++]=j;
+            c[j]--;
+        }
+        else
+            j++;
+    }
+}
+
 int main()
 {
     int A[]={3,7,9,10,6,5,12,4,11,2};
@@ -143,8 +184,9 @@ int main()
     //Insertion(A,n);
     //Selection(A,n);
     //QuickSort(A,0,n-1);
-    //IMergeSort(A,n);
-    MergeSort(A,0,n-1);
+    //IMergeSort(A,n);  //Iterative Merge Sort
+    //MergeSort(A,0,n-1);
+    CountSort(A,n);
     for(int i=0; i<n; i++)
     {
         cout<<A[i]<<" ";
