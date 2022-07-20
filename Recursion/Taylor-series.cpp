@@ -16,6 +16,16 @@ double e(int x,int n)
         return r+p/f;
 }
 
+double e1(int x,int n)          //using Horner's Rule
+{
+    static double s=1;
+    if(n==0)
+        return s;
+    s=1+s*x/n;
+    return e1(x,n-1);
+}
+
+
 int main()
 {
     cout<<e(1,10);
