@@ -25,6 +25,15 @@ double e1(int x,int n)          //using Horner's Rule
     return e1(x,n-1);
 }
 
+double e2(int x,int n)          //Iterative version
+{
+    double s=1;
+    for(; n>0; n--)
+    {
+        s= 1+s*x/n;
+    }
+    return s;
+}
 
 int main()
 {
