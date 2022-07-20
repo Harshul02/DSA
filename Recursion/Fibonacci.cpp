@@ -38,7 +38,7 @@ int fib2(int n)
         F[n-2]=fib2(n-2);
     if(F[n-1]==-1)
         F[n-1]=fib2(n-1);
-        
+    F[n]=F[n-2]+F[n-1];
     return F[n-2]+F[n-1];
 }
 int main()
