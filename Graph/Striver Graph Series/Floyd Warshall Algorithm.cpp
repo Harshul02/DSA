@@ -22,7 +22,16 @@ void shortest_distance(vector<vector<int>>&matrix){
 	            }
 	        }
 	    }
-	    
+	    /*
+		for(int i=0; i<n; i++)
+		{
+			if(matrix[i][i] < 0)
+			{
+				"Negative Cycle";
+			}
+		}
+		*/
+
 	    for(int i=0; i<n; i++)
 	    {
 	        for(int j=0; j<n; j++)
